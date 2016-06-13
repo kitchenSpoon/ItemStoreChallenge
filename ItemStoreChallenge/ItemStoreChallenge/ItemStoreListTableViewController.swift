@@ -16,7 +16,13 @@ class ItemStoreListTableViewController: UIViewController
     var nextCursor: String? = nil
     var server = ItemStoreServer()
     var detailViewSegue = "showDetailView"
+    var createViewSegue = "showCreateView"
     var selectedItem: Item? = nil
+    
+    
+    @IBAction func didClickAddButton(sender: UIBarButtonItem) {
+        
+    }
     
     override func viewDidLoad()
     {
@@ -54,11 +60,15 @@ class ItemStoreListTableViewController: UIViewController
     //MARK: Navigation helpers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
-        if segue.identifier == detailViewSegue {
+        
+        if  segue.identifier == detailViewSegue {
             guard let vc = segue.destinationViewController as? ItemStoreDetailViewController else { return }
             vc.selectedItem = selectedItem
             vc.server = server
             vc.delegate = self
+        } else if segue.identifier == createViewSegue {
+            guard let vc = segue.destinationViewController as? ItemStoreCreateItemViewController else { return }
+            vc.server = server
         }
     }
 }
