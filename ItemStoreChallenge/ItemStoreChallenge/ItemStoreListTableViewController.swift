@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias completionBlock = (success: Bool) -> Void
+
 class ItemStoreListTableViewController: UIViewController
 {
 
@@ -19,6 +21,13 @@ class ItemStoreListTableViewController: UIViewController
     var detailViewSegue = "showDetailView"
     var createViewSegue = "showCreateView"
     var selectedItem: Item? = nil
+    var reachedEnd = false
+    
+    
+    @IBAction func didClickHalfsizeButton(sender: UIButton)
+    {
+        fetchAndHalfsizeAllItemsPhoto(server)
+    }
     
     
     override func viewDidLoad()
@@ -45,12 +54,92 @@ class ItemStoreListTableViewController: UIViewController
     func fetchItems(server: ItemStoreServer, nextCursor: String?)
     {
         server.getItemsWithNextCursor(nextCursor, success: { (items:[Item], newNextCursor: String?) in
+            if items.count == 0 {
+                self.reachedEnd = true
+            }
+            
             self.itemStoreItems += items
             self.tableView.reloadData()
             self.nextCursor = newNextCursor
         }) { ( error:NSError ) in
             print("getItemsWithNextCursor error = \(error)")
         }
+    }
+    
+    
+    //Fetch all items first then
+    func fetchAndHalfsizeAllItemsPhoto(server: ItemStoreServer)
+    {
+        fetchAllItems(server, nextCursor: nextCursor) { (success) in
+            if success {
+                self.halfsizeAllItemsPhoto(server, items: self.itemStoreItems)
+            } else {
+                print("error half sizing")
+            }
+        }
+    }
+    
+    
+    func halfsizeAllItemsPhoto(server: ItemStoreServer, items: [Item])
+    {
+        for item in items {
+            server.getContentForItem(item, success: { (image: UIImage) in
+                let newImage = self.halfSizeImage(image)
+                self.replaceItemImage(item, image: newImage)
+                }, failure: { (error: NSError) in
+                    print("getContentForItem error = \(error) ")
+            })
+        }
+
+    }
+    
+    
+    //Fetch all items until we reach the end, call the completion block when we reach the end or when it encounters an error
+    func fetchAllItems(server: ItemStoreServer, nextCursor: String?, completion: completionBlock)
+    {
+        if !reachedEnd {
+            server.getItemsWithNextCursor(nextCursor, success: { (items:[Item], newNextCursor: String?) in
+                if items.count == 0 {
+                    self.reachedEnd = true
+                }
+                
+                self.itemStoreItems += items
+                self.tableView.reloadData()
+                self.nextCursor = newNextCursor
+                
+                if !self.reachedEnd {
+                    self.fetchAllItems(server, nextCursor: newNextCursor, completion: completion)
+                }
+            }) { ( error:NSError ) in
+                print("getItemsWithNextCursor error = \(error)")
+                completion(success: false)
+            }
+        } else {
+            completion(success: true)
+        }
+    }
+    
+    
+    func halfSizeImage(image: UIImage) -> UIImage
+    {
+        let currentSize = image.size
+        let newSize = CGSize(width: currentSize.width/2, height: currentSize.height/2)
+        UIGraphicsBeginImageContext(newSize)
+        image.drawInRect(CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    
+    //Make api call with server to replace the image of the item
+    func replaceItemImage(item: Item, image: UIImage)
+    {
+        server.replaceContentForItem(item, withImage: image, success: {
+                print("replaceItemImage success ")
+            }, failure: { (error: NSError) in
+                print("replaceItemImage error = \(error) ")
+        })
     }
  
     
