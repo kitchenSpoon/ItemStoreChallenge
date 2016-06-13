@@ -15,6 +15,8 @@ class ItemStoreListTableViewController: UIViewController
     var itemStoreItems = [Item]()
     var nextCursor: String? = nil
     var server = ItemStoreServer()
+    var detailViewSegue = "showDetailView"
+    var selectedItem: Item? = nil
     
     override func viewDidLoad()
     {
@@ -46,11 +48,20 @@ class ItemStoreListTableViewController: UIViewController
             print("getItemsWithNextCursor error = \(error)")
         }
     }
+ 
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if segue.identifier == detailViewSegue {
+            guard let vc = segue.destinationViewController as? ItemStoreDetailViewController else { return }
+            vc.selectedItem = selectedItem
+        }
+    }
 }
 
 
-extension ItemStoreListTableViewController: UITableViewDelegate, UITableViewDataSource {
+extension ItemStoreListTableViewController: UITableViewDelegate, UITableViewDataSource
+{
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return itemStoreItems.count
@@ -70,5 +81,11 @@ extension ItemStoreListTableViewController: UITableViewDelegate, UITableViewData
         if indexPath.row == itemStoreItems.count - 1 {
             fetchItems(server, nextCursor: nextCursor)
         }
+    }
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        performSegueWithIdentifier(detailViewSegue, sender: self)
     }
 }

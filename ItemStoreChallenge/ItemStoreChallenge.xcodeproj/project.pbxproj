@@ -16,6 +16,7 @@
 		CC22426A1D0E41CC007D5831 /* ItemStoreChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2242691D0E41CC007D5831 /* ItemStoreChallengeTests.swift */; };
 		CC2242751D0E43AA007D5831 /* ItemStoreTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2242741D0E43AA007D5831 /* ItemStoreTask.framework */; };
 		CC2242761D0E43AA007D5831 /* ItemStoreTask.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CC2242741D0E43AA007D5831 /* ItemStoreTask.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CC22427C1D0E5CB8007D5831 /* ItemStoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC22427B1D0E5CB8007D5831 /* ItemStoreDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		CC22426B1D0E41CC007D5831 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC2242741D0E43AA007D5831 /* ItemStoreTask.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ItemStoreTask.framework; sourceTree = "<group>"; };
 		CC2242781D0E43D3007D5831 /* ItemStoreChallenge-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ItemStoreChallenge-Bridging-Header.h"; sourceTree = "<group>"; };
+		CC22427B1D0E5CB8007D5831 /* ItemStoreDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStoreDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				CC22425D1D0E41CC007D5831 /* LaunchScreen.storyboard */,
 				CC2242601D0E41CC007D5831 /* Info.plist */,
 				CC2242581D0E41CC007D5831 /* ItemStoreChallenge.xcdatamodeld */,
+				CC22427B1D0E5CB8007D5831 /* ItemStoreDetailViewController.swift */,
 			);
 			path = ItemStoreChallenge;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC22427C1D0E5CB8007D5831 /* ItemStoreDetailViewController.swift in Sources */,
 				CC22425A1D0E41CC007D5831 /* ItemStoreChallenge.xcdatamodeld in Sources */,
 				CC2242541D0E41CC007D5831 /* ItemStoreListTableViewController.swift in Sources */,
 				CC2242521D0E41CC007D5831 /* AppDelegate.swift in Sources */,
