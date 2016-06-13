@@ -8,11 +8,17 @@
 
 import Foundation
 
+protocol ItemStoreDetailDelegate
+{
+    func didDeleteItem(deletedItem: Item)
+}
+
 
 class ItemStoreDetailViewController: UIViewController
 {
     var selectedItem: Item?
     var server: ItemStoreServer?
+    var delegate: ItemStoreDetailDelegate?
     
     @IBOutlet weak var itemContentImageView: UIImageView!
     
@@ -21,6 +27,12 @@ class ItemStoreDetailViewController: UIViewController
     @IBOutlet weak var itemOwnerLabel: UILabel!
     @IBOutlet weak var waterMarkLabel: UILabel!
     
+    
+    @IBAction func didClickTrashButton(sender: UIBarButtonItem)
+    {
+        guard let item = selectedItem else { return }
+        deleteItem(item)
+    }
     
     override func viewDidLoad()
     {
@@ -47,8 +59,20 @@ class ItemStoreDetailViewController: UIViewController
             dispatch_async(dispatch_get_main_queue(), {
                 self.itemContentImageView.image = image
             })
-            }, failure: { (error: NSError) in
+        }, failure: { (error: NSError) in
                 print("getContentForItem error = \(error) ")
+        })
+    }
+    
+    
+    func deleteItem(item: Item)
+    {
+        server?.deleteItem(item, success: { 
+            print("deleteItem is successful")
+            self.delegate?.didDeleteItem(item)
+            self.navigationController?.popViewControllerAnimated(true)
+        }, failure: { (error: NSError) in
+            print("deleteItem error = \(error) ")
         })
     }
 }

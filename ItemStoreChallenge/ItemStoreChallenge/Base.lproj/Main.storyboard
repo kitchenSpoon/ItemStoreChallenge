@@ -108,7 +108,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7rO-lR-X5u">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="hxM-2k-qnp"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="hxM-2k-qnp">
+                            <connections>
+                                <action selector="didClickTrashButton:" destination="Ki2-5K-4tM" id="twO-1R-caw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="itemContentImageView" destination="HcN-6I-UF3" id="RhI-W6-odG"/>

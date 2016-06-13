@@ -58,6 +58,7 @@ class ItemStoreListTableViewController: UIViewController
             guard let vc = segue.destinationViewController as? ItemStoreDetailViewController else { return }
             vc.selectedItem = selectedItem
             vc.server = server
+            vc.delegate = self
         }
     }
 }
@@ -92,5 +93,17 @@ extension ItemStoreListTableViewController: UITableViewDelegate, UITableViewData
     {
         selectedItem = itemStoreItems[indexPath.row]
         performSegueWithIdentifier(detailViewSegue, sender: self)
+    }
+}
+
+
+//MARK: ItemStoreDetailDelegate
+extension ItemStoreListTableViewController: ItemStoreDetailDelegate {
+    func didDeleteItem(deletedItem: Item) {
+        itemStoreItems = itemStoreItems.filter { (item: Item) -> Bool in
+            item.itemId != deletedItem.itemId
+        }
+        
+        tableView.reloadData()
     }
 }
