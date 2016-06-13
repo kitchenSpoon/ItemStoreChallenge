@@ -20,6 +20,7 @@
 		CC22427E1D0E9372007D5831 /* ItemStoreCreateItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC22427D1D0E9372007D5831 /* ItemStoreCreateItemViewController.swift */; };
 		CC22427F1D0EB035007D5831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC22425B1D0E41CC007D5831 /* Assets.xcassets */; };
 		CC2242801D0EB07C007D5831 /* ItemStoreTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2242741D0E43AA007D5831 /* ItemStoreTask.framework */; };
+		CC2242821D0EBDAB007D5831 /* UIImage+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2242811D0EBDAB007D5831 /* UIImage+Resizing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		CC2242781D0E43D3007D5831 /* ItemStoreChallenge-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ItemStoreChallenge-Bridging-Header.h"; sourceTree = "<group>"; };
 		CC22427B1D0E5CB8007D5831 /* ItemStoreDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStoreDetailViewController.swift; sourceTree = "<group>"; };
 		CC22427D1D0E9372007D5831 /* ItemStoreCreateItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemStoreCreateItemViewController.swift; sourceTree = "<group>"; };
+		CC2242811D0EBDAB007D5831 /* UIImage+Resizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Resizing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 				CC2242581D0E41CC007D5831 /* ItemStoreChallenge.xcdatamodeld */,
 				CC22427B1D0E5CB8007D5831 /* ItemStoreDetailViewController.swift */,
 				CC22427D1D0E9372007D5831 /* ItemStoreCreateItemViewController.swift */,
+				CC2242811D0EBDAB007D5831 /* UIImage+Resizing.swift */,
 			);
 			path = ItemStoreChallenge;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC2242821D0EBDAB007D5831 /* UIImage+Resizing.swift in Sources */,
 				CC22427E1D0E9372007D5831 /* ItemStoreCreateItemViewController.swift in Sources */,
 				CC22427C1D0E5CB8007D5831 /* ItemStoreDetailViewController.swift in Sources */,
 				CC22425A1D0E41CC007D5831 /* ItemStoreChallenge.xcdatamodeld in Sources */,

@@ -84,7 +84,7 @@ class ItemStoreListTableViewController: UIViewController
     {
         for item in items {
             server.getContentForItem(item, success: { (image: UIImage) in
-                let newImage = self.halfSizeImage(image)
+                let newImage = image.halfSizeImage()
                 self.replaceItemImage(item, image: newImage)
                 }, failure: { (error: NSError) in
                     print("getContentForItem error = \(error) ")
@@ -117,18 +117,6 @@ class ItemStoreListTableViewController: UIViewController
         } else {
             completion(success: true)
         }
-    }
-    
-    
-    func halfSizeImage(image: UIImage) -> UIImage
-    {
-        let currentSize = image.size
-        let newSize = CGSize(width: currentSize.width/2, height: currentSize.height/2)
-        UIGraphicsBeginImageContext(newSize)
-        image.drawInRect(CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
     }
     
     
