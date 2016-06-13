@@ -33,4 +33,17 @@ class ItemStoreChallengeTests: XCTestCase {
         }
     }
     
+    func testImageHalfsizing()
+    {
+        let vc = ItemStoreListTableViewController()
+        let image = UIImage(named: "cat_curlup3")
+        let beforeWidth = image!.size.width
+        let beforeHeight = image!.size.height
+        let newImage = vc.halfSizeImage(image!)
+        let newWidth = newImage.size.width
+        let newHeight = newImage.size.height
+        
+        XCTAssert(beforeWidth == newWidth * 2)
+        XCTAssert(beforeHeight == newHeight * 2)
+    }
 }
