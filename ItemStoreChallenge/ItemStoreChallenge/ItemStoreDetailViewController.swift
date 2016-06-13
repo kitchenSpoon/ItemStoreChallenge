@@ -69,6 +69,7 @@ class ItemStoreDetailViewController: UIViewController
     {
         server?.deleteItem(item, success: { 
             print("deleteItem is successful")
+            //Notify the ItemStoreListTableViewController that the item has been deleted so it can remove the deleted item from the datasource
             self.delegate?.didDeleteItem(item)
             self.navigationController?.popViewControllerAnimated(true)
         }, failure: { (error: NSError) in

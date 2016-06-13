@@ -20,8 +20,8 @@ class ItemStoreListTableViewController: UIViewController
     var server = ItemStoreServer()
     var detailViewSegue = "showDetailView"
     var createViewSegue = "showCreateView"
-    var selectedItem: Item? = nil
-    var reachedEnd = false
+    var selectedItem: Item? = nil //Used to store the selected item before passing it to ItemStoreDetailViewController
+    var reachedEnd = false        //Used to know whether we've reached the end of the item list
     
     
     @IBAction func didClickHalfsizeButton(sender: UIButton)
@@ -107,6 +107,7 @@ class ItemStoreListTableViewController: UIViewController
                 self.nextCursor = newNextCursor
                 
                 if !self.reachedEnd {
+                    //Fetch the next batch of items if there are still more
                     self.fetchAllItems(server, nextCursor: newNextCursor, completion: completion)
                 }
             }) { ( error:NSError ) in
@@ -178,6 +179,7 @@ extension ItemStoreListTableViewController: UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
     {
+        //Fetch new items when we reach the end of the list
         if indexPath.row == itemStoreItems.count - 1 {
             fetchItems(server, nextCursor: nextCursor)
         }
@@ -195,6 +197,7 @@ extension ItemStoreListTableViewController: UITableViewDelegate, UITableViewData
 //MARK: ItemStoreDetailDelegate
 extension ItemStoreListTableViewController: ItemStoreDetailDelegate {
     func didDeleteItem(deletedItem: Item) {
+        //Remove deleted item
         itemStoreItems = itemStoreItems.filter { (item: Item) -> Bool in
             item.itemId != deletedItem.itemId
         }

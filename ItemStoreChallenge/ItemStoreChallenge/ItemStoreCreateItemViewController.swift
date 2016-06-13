@@ -14,7 +14,7 @@ class ItemStoreCreateItemViewController: UIViewController
     @IBOutlet weak var nameField: UITextField!
     
     var server: ItemStoreServer?
-    var image: UIImage? = nil
+    var image: UIImage? = nil          //Selected image from user
     
     
     @IBAction func didClickAddImageButton(sender: UIButton)
@@ -25,6 +25,7 @@ class ItemStoreCreateItemViewController: UIViewController
     
     @IBAction func didClickCreateItemButton(sender: UIButton)
     {
+        //Validate that we have both name and image else we show an alert
         guard let image = image else { showNotEnoughDataError(); return }
         guard let name = nameField.text where name.characters.count != 0 else { showNotEnoughDataError(); return }
         
