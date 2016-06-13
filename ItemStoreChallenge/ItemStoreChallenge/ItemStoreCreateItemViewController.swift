@@ -10,7 +10,6 @@ import Foundation
 
 class ItemStoreCreateItemViewController: UIViewController
 {
-    
     @IBOutlet weak var selectedImageImageView: UIImageView!
     @IBOutlet weak var nameField: UITextField!
     

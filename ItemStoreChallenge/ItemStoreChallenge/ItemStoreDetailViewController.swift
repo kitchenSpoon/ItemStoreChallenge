@@ -21,7 +21,6 @@ class ItemStoreDetailViewController: UIViewController
     var delegate: ItemStoreDetailDelegate?
     
     @IBOutlet weak var itemContentImageView: UIImageView!
-    
     @IBOutlet weak var itemIdLabel: UILabel!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var itemOwnerLabel: UILabel!
@@ -33,6 +32,7 @@ class ItemStoreDetailViewController: UIViewController
         guard let item = selectedItem else { return }
         deleteItem(item)
     }
+    
     
     override func viewDidLoad()
     {

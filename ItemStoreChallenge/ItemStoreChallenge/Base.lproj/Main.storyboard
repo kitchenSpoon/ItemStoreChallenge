@@ -137,7 +137,6 @@
                     <navigationItem key="navigationItem" id="t5D-rl-88M">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="P2B-pl-Ctf">
                             <connections>
-                                <action selector="didClickAddButton:" destination="BYZ-38-t0r" id="dYI-UB-w2S"/>
                                 <segue destination="IiH-VG-C4N" kind="show" identifier="showCreateView" id="XTU-Ur-fAL"/>
                             </connections>
                         </barButtonItem>

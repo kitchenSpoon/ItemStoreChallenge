@@ -12,6 +12,7 @@ class ItemStoreListTableViewController: UIViewController
 {
 
     @IBOutlet weak var tableView: UITableView!
+    
     var itemStoreItems = [Item]()
     var nextCursor: String? = nil
     var server = ItemStoreServer()
@@ -19,10 +20,6 @@ class ItemStoreListTableViewController: UIViewController
     var createViewSegue = "showCreateView"
     var selectedItem: Item? = nil
     
-    
-    @IBAction func didClickAddButton(sender: UIBarButtonItem) {
-        
-    }
     
     override func viewDidLoad()
     {
