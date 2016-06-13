@@ -8,14 +8,16 @@
 
 import UIKit
 
-class ItemStoreListTableViewController: UIViewController {
+class ItemStoreListTableViewController: UIViewController
+{
 
     @IBOutlet weak var tableView: UITableView!
     var itemStoreItems = [Item]()
     var nextCursor: String? = nil
     var server = ItemStoreServer()
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -25,33 +27,48 @@ class ItemStoreListTableViewController: UIViewController {
         fetchItems(server, nextCursor: nextCursor)
     }
 
-    override func didReceiveMemoryWarning() {
+    
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    
     //NextCursor is used for pagination and specifies the offset to fetch the next batch
     func fetchItems(server: ItemStoreServer, nextCursor: String?)
     {
         server.getItemsWithNextCursor(nextCursor, success: { (items:[Item], newNextCursor: String?) in
-            self.itemStoreItems = items
+            self.itemStoreItems += items
             self.tableView.reloadData()
             self.nextCursor = newNextCursor
-        }) { (error:NSError) in
+        }) { ( error:NSError ) in
             print("getItemsWithNextCursor error = \(error)")
         }
     }
     
 }
 
+
 extension ItemStoreListTableViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return itemStoreItems.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = UITableViewCell()
         cell.textLabel?.text = itemStoreItems[indexPath.row].name
         return cell
+    }
+    
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if indexPath.row == itemStoreItems.count - 1 {
+            fetchItems(server, nextCursor: nextCursor)
+        }
     }
 }
