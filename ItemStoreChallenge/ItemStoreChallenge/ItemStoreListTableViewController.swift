@@ -37,6 +37,7 @@ class ItemStoreListTableViewController: UIViewController
     }
 
     
+    //MARK: API
     //NextCursor is used for pagination and specifies the offset to fetch the next batch
     func fetchItems(server: ItemStoreServer, nextCursor: String?)
     {
@@ -50,6 +51,7 @@ class ItemStoreListTableViewController: UIViewController
     }
  
     
+    //MARK: Navigation helpers
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if segue.identifier == detailViewSegue {
@@ -61,6 +63,7 @@ class ItemStoreListTableViewController: UIViewController
 }
 
 
+//MARK: UITableViewDelegate, UITableViewDataSource
 extension ItemStoreListTableViewController: UITableViewDelegate, UITableViewDataSource
 {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

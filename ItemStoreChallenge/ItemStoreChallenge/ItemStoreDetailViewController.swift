@@ -40,6 +40,7 @@ class ItemStoreDetailViewController: UIViewController
     }
     
     
+    //MARK: API
     func fetchAndSetContentForItem(item: Item)
     {
         server?.getContentForItem(item, success: { (image: UIImage) in
