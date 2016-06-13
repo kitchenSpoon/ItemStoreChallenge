@@ -1,0 +1,6 @@
+framework module ItemStoreTask {
+  umbrella header "ItemStoreTask.h"
+
+  export *
+  module * { export * }
+}
