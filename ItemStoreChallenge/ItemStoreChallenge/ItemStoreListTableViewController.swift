@@ -86,6 +86,7 @@ extension ItemStoreListTableViewController: UITableViewDelegate, UITableViewData
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        selectedItem = itemStoreItems[indexPath.row]
         performSegueWithIdentifier(detailViewSegue, sender: self)
     }
 }
