@@ -90,7 +90,6 @@ class ItemStoreListTableViewController: UIViewController
                     print("getContentForItem error = \(error) ")
             })
         }
-
     }
     
     
