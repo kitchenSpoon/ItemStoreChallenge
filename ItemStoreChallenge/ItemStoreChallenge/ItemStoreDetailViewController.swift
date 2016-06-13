@@ -19,6 +19,7 @@ class ItemStoreDetailViewController: UIViewController
     @IBOutlet weak var itemIdLabel: UILabel!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var itemOwnerLabel: UILabel!
+    @IBOutlet weak var waterMarkLabel: UILabel!
     
     
     override func viewDidLoad()
@@ -33,14 +34,20 @@ class ItemStoreDetailViewController: UIViewController
         itemIdLabel.text = item.itemId
         itemNameLabel.text = item.name
         itemOwnerLabel.text = item.owner
+        waterMarkLabel.text = NSDate().description
         
+        fetchAndSetContentForItem(item)
+    }
+    
+    
+    func fetchAndSetContentForItem(item: Item)
+    {
         server?.getContentForItem(item, success: { (image: UIImage) in
             dispatch_async(dispatch_get_main_queue(), {
                 self.itemContentImageView.image = image
             })
-        }, failure: { (error: NSError) in
+            }, failure: { (error: NSError) in
                 print("getContentForItem error = \(error) ")
         })
     }
-    
 }
