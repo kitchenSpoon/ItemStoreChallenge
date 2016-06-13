@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CC2242521D0E41CC007D5831 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2242511D0E41CC007D5831 /* AppDelegate.swift */; };
-		CC2242541D0E41CC007D5831 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2242531D0E41CC007D5831 /* ViewController.swift */; };
+		CC2242541D0E41CC007D5831 /* ItemStoreListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2242531D0E41CC007D5831 /* ItemStoreListTableViewController.swift */; };
 		CC2242571D0E41CC007D5831 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2242551D0E41CC007D5831 /* Main.storyboard */; };
 		CC22425A1D0E41CC007D5831 /* ItemStoreChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC2242581D0E41CC007D5831 /* ItemStoreChallenge.xcdatamodeld */; };
 		CC22425C1D0E41CC007D5831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC22425B1D0E41CC007D5831 /* Assets.xcassets */; };
@@ -45,7 +45,7 @@
 /* Begin PBXFileReference section */
 		CC22424E1D0E41CC007D5831 /* ItemStoreChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ItemStoreChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2242511D0E41CC007D5831 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CC2242531D0E41CC007D5831 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC2242531D0E41CC007D5831 /* ItemStoreListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStoreListTableViewController.swift; sourceTree = "<group>"; };
 		CC2242561D0E41CC007D5831 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC2242591D0E41CC007D5831 /* ItemStoreChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ItemStoreChallenge.xcdatamodel; sourceTree = "<group>"; };
 		CC22425B1D0E41CC007D5831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				CC2242511D0E41CC007D5831 /* AppDelegate.swift */,
-				CC2242531D0E41CC007D5831 /* ViewController.swift */,
+				CC2242531D0E41CC007D5831 /* ItemStoreListTableViewController.swift */,
 				CC2242551D0E41CC007D5831 /* Main.storyboard */,
 				CC22425B1D0E41CC007D5831 /* Assets.xcassets */,
 				CC22425D1D0E41CC007D5831 /* LaunchScreen.storyboard */,
@@ -223,7 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC22425A1D0E41CC007D5831 /* ItemStoreChallenge.xcdatamodeld in Sources */,
-				CC2242541D0E41CC007D5831 /* ViewController.swift in Sources */,
+				CC2242541D0E41CC007D5831 /* ItemStoreListTableViewController.swift in Sources */,
 				CC2242521D0E41CC007D5831 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
