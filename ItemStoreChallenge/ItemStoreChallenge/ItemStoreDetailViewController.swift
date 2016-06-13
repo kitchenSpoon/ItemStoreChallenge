@@ -12,6 +12,7 @@ import Foundation
 class ItemStoreDetailViewController: UIViewController
 {
     var selectedItem: Item?
+    var server: ItemStoreServer?
     
     @IBOutlet weak var itemContentImageView: UIImageView!
     
@@ -20,7 +21,8 @@ class ItemStoreDetailViewController: UIViewController
     @IBOutlet weak var itemOwnerLabel: UILabel!
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         configureUI(selectedItem)
     }
     
@@ -31,6 +33,14 @@ class ItemStoreDetailViewController: UIViewController
         itemIdLabel.text = item.itemId
         itemNameLabel.text = item.name
         itemOwnerLabel.text = item.owner
+        
+        server?.getContentForItem(item, success: { (image: UIImage) in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.itemContentImageView.image = image
+            })
+        }, failure: { (error: NSError) in
+                print("getContentForItem error = \(error) ")
+        })
     }
     
 }

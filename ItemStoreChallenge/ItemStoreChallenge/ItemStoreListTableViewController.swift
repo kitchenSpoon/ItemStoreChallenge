@@ -55,6 +55,7 @@ class ItemStoreListTableViewController: UIViewController
         if segue.identifier == detailViewSegue {
             guard let vc = segue.destinationViewController as? ItemStoreDetailViewController else { return }
             vc.selectedItem = selectedItem
+            vc.server = server
         }
     }
 }
