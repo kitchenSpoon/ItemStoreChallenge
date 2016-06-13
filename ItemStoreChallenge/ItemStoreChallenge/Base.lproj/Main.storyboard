@@ -6,10 +6,10 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Item Store Create Item View Controller-->
         <scene sceneID="Xea-Vk-8Ir">
             <objects>
-                <viewController id="IiH-VG-C4N" sceneMemberID="viewController">
+                <viewController id="IiH-VG-C4N" customClass="ItemStoreCreateItemViewController" customModule="ItemStoreChallenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="68V-QQ-l1M"/>
                         <viewControllerLayoutGuide type="bottom" id="di5-MZ-ykz"/>
@@ -38,24 +38,38 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k40-Mh-l0t">
                                 <rect key="frame" x="20" y="155" width="560" height="355"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mns-sQ-ew1">
+                                        <rect key="frame" x="259" y="167" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W8p-Jn-8po">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="355"/>
-                                        <color key="backgroundColor" red="0.94588462752525249" green="0.94588462752525249" blue="0.94588462752525249" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEN-St-Bac">
-                                        <rect key="frame" x="265" y="162.5" width="30" height="30"/>
-                                        <state key="normal" title="+"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="355"/>
+                                        <connections>
+                                            <action selector="didClickAddImageButton:" destination="IiH-VG-C4N" eventType="touchUpInside" id="J8S-XL-LVu"/>
+                                        </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.95825441919191923" green="0.95825441919191923" blue="0.95825441919191923" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="mns-sQ-ew1" firstAttribute="centerX" secondItem="k40-Mh-l0t" secondAttribute="centerX" id="EBW-PJ-ooR"/>
+                                    <constraint firstItem="mns-sQ-ew1" firstAttribute="centerY" secondItem="k40-Mh-l0t" secondAttribute="centerY" id="Led-Eq-7Qt"/>
                                     <constraint firstAttribute="bottom" secondItem="W8p-Jn-8po" secondAttribute="bottom" id="Nte-Qg-11p"/>
+                                    <constraint firstItem="VEN-St-Bac" firstAttribute="top" secondItem="k40-Mh-l0t" secondAttribute="top" id="NxF-uv-LHh"/>
                                     <constraint firstItem="VEN-St-Bac" firstAttribute="centerX" secondItem="k40-Mh-l0t" secondAttribute="centerX" id="TTj-2e-rk3"/>
                                     <constraint firstAttribute="trailing" secondItem="W8p-Jn-8po" secondAttribute="trailing" id="TkW-rU-wE4"/>
                                     <constraint firstItem="VEN-St-Bac" firstAttribute="centerY" secondItem="k40-Mh-l0t" secondAttribute="centerY" id="Uyi-Q1-NSB"/>
+                                    <constraint firstAttribute="trailing" secondItem="VEN-St-Bac" secondAttribute="trailing" id="VJL-mz-8JV"/>
+                                    <constraint firstItem="VEN-St-Bac" firstAttribute="leading" secondItem="k40-Mh-l0t" secondAttribute="leading" id="aiI-Ih-8he"/>
                                     <constraint firstItem="W8p-Jn-8po" firstAttribute="top" secondItem="k40-Mh-l0t" secondAttribute="top" id="kOy-Bu-ZDf"/>
                                     <constraint firstAttribute="width" secondItem="k40-Mh-l0t" secondAttribute="height" multiplier="112:71" id="qrm-IG-oIf"/>
                                     <constraint firstItem="W8p-Jn-8po" firstAttribute="leading" secondItem="k40-Mh-l0t" secondAttribute="leading" id="rwM-WN-Epm"/>
+                                    <constraint firstAttribute="bottom" secondItem="VEN-St-Bac" secondAttribute="bottom" id="uyO-FU-QIo"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsV-21-Yzz">
@@ -64,6 +78,9 @@
                                     <constraint firstAttribute="height" constant="50" id="jUz-Vx-73E"/>
                                 </constraints>
                                 <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="didClickCreateItemButton:" destination="IiH-VG-C4N" eventType="touchUpInside" id="i4g-lv-Fkp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,6 +100,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IHd-Ao-ata"/>
+                    <connections>
+                        <outlet property="nameField" destination="Kme-fa-mBT" id="1A9-F4-ZhF"/>
+                        <outlet property="selectedImageImageView" destination="W8p-Jn-8po" id="qZ7-ar-ThB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WaF-Hn-7hJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
