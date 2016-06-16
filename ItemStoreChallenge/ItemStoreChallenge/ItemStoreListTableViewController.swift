@@ -5,10 +5,8 @@
 //  Created by Jack Lian on 13/06/2016.
 //  Copyright © 2016 KitchenSpoon. All rights reserved.
 //
-
+//range {59, 5} extends beyond bounds [0 .. 57]'
 import UIKit
-
-typealias completionBlock = (success: Bool) -> Void
 
 class ItemStoreListTableViewController: UIViewController
 {
@@ -72,23 +70,11 @@ class ItemStoreListTableViewController: UIViewController
     {
         fetchAllItems(server, nextCursor: nextCursor) { (success) in
             if success {
-                self.halfsizeAllItemsPhoto(server, items: self.itemStoreItems)
+                let manager = BatchHalfsizingManager(server: server)
+                manager.halfsizeAllItemsPhoto(self.itemStoreItems)
             } else {
                 print("error half sizing")
             }
-        }
-    }
-    
-    
-    func halfsizeAllItemsPhoto(server: ItemStoreServer, items: [Item])
-    {
-        for item in items {
-            server.getContentForItem(item, success: { (image: UIImage) in
-                let newImage = image.halfSizeImage()
-                self.replaceItemImage(item, image: newImage)
-                }, failure: { (error: NSError) in
-                    print("getContentForItem error = \(error) ")
-            })
         }
     }
     
@@ -117,17 +103,6 @@ class ItemStoreListTableViewController: UIViewController
         } else {
             completion(success: true)
         }
-    }
-    
-    
-    //Make api call with server to replace the image of the item
-    func replaceItemImage(item: Item, image: UIImage)
-    {
-        server.replaceContentForItem(item, withImage: image, success: {
-                print("replaceItemImage success ")
-            }, failure: { (error: NSError) in
-                print("replaceItemImage error = \(error) ")
-        })
     }
  
     

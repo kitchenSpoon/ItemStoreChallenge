@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import AVFoundation
+import Photos
 
 class ItemStoreCreateItemViewController: UIViewController
 {
@@ -19,7 +21,8 @@ class ItemStoreCreateItemViewController: UIViewController
     
     @IBAction func didClickAddImageButton(sender: UIButton)
     {
-        pickPhoto()
+//        pickPhoto()
+        askForPermission()
     }
     
     
@@ -40,6 +43,28 @@ class ItemStoreCreateItemViewController: UIViewController
         picker.allowsEditing = true
         picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    
+    func checkForAndAsksPhotosPermission() //TODO: rename this
+    {
+        let authStatus = PHPhotoLibrary.authorizationStatus()
+        switch authStatus {
+        case .Denied, .Restricted:
+            print("Show instructions on reenabling permissions")
+        case .NotDetermined:
+            askForPermission()
+        case .Authorized:
+            self.pickPhoto()
+        }
+    }
+    
+    
+    func askForPermission()
+    {
+        PHPhotoLibrary.requestAuthorization({ (status: PHAuthorizationStatus) in
+            self.checkForAndAsksPhotosPermission()
+        })
     }
     
     
